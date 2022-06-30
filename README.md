@@ -1,24 +1,30 @@
-# README
+# Manga lists
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+漫画のレビューを書いたり、どこで購入したか、お気に入りの漫画を探したりするサイト。
+### サイトテーマ
+自身がみた漫画のお気に入り度や、紙で買ったのか、漫画サイトorアプリで購入やレンタルを行ったのか確認もできるレビューサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+もともと漫画が好きで紙で買ったりアプリやWebサイトで購入することがあるのですが、また見たいと思った時にどのサイトか忘れてしまい、もう一度買うこともあったため確認できるものがあればと考えました。尚且ついろんな方のオススメが見れれば次に読む漫画を決めることも出来とためです。
 
-* Ruby version
+### ターゲットユーザ
+漫画が好きな方。
 
-* System dependencies
+### 主な利用シーン
+見たい漫画の購入先が検索できたり、他の方のおすすめの漫画を検索することもできる
 
-* Configuration
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1VQ1Qa2RzPNey0SGsHk7S3Yigx-nOReRVLLBO145mUBk/edit?usp=sharing
 
-* Database creation
+## 設計書
 
-* Database initialization
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
