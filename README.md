@@ -28,3 +28,5 @@ https://docs.google.com/spreadsheets/d/1VQ1Qa2RzPNey0SGsHk7S3Yigx-nOReRVLLBO145m
 - IDE：Cloud9
 
 ## 使用素材
+
+外部のAPIを利用する又は、イラストを利用しない
