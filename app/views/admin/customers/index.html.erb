@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">会員一覧</h3>
+    </div>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>会員ID</th>
+              <th>ニックネーム</th>
+              <th>メールアドレス</th>
+              <th>投稿数</th>
+              <th>退会ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.nickname,"customers/#{customer.id}/edit" %></td>
+                <td><%= customer.email %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+  </div>
+</div>
