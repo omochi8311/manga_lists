@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">会員一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>会員ID</th>
+          <th>会員画像</th>
+          <th>会員ニックネーム</th>
+          <th>投稿数</th>
+        </tr>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td>
+            <% if customer.image.attached? %>
+              <%= image_tag customer.image, size: "80x80" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "80x80" %>
+            <% end %>
+          </td>
+          <td><%= customer.nickname %></td>
+          <td></td>
+        </tr>
+      <% end %>
+  </div>
+</div>

@@ -1,3 +1,3 @@
 class Request < ApplicationRecord
-  belongs_to :request
+  belongs_to :customer
 end

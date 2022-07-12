@@ -21,6 +21,12 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path  # 投稿一覧画面へリダイレクト
   end
 
+  def update
+    @genre =Genre.find(params[:id])
+    @genre.update(genre_params)
+    redirect_to admin_genres_path
+  end
+
   private
 
   def genre_params

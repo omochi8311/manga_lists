@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">プロフィール編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @customer,url: customers_update_path(@customer) do |f| %>
+      <%= f.file_field :image, accept: "image/*" %>
+    <h5>ニックネーム
+      <%= f.text_field :nickname %>
+    </h5>
+    <h5>メールアドレス
+      <%= f.text_field :email %>
+    </h5>
+    <h5>自己紹介
+      <%= f.text_field :information %>
+    </h5>
+      <%= link_to "退会する",customers_withdrawal_path,class: "btn btn-danger" %>
+      |
+      <%= f.submit "保存する",class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

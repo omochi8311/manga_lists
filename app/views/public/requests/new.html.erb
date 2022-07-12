@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">マイページ</h3>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @request,url: requests_path(@request) do |f| %>
+      <h5>タイトル
+        <%= f.text_field :title %>
+      </h5>
+      <h5>著者
+        <%= f.text_field :author %>
+      </h5>
+        <%= f.submit "送信する",class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

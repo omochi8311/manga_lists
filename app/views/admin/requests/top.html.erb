@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">リクエスト一覧</h3>
+    </div>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @requests.each do |request| %>
+          <tr>
+            <td>
+              <%= request.title %>
+            </td>
+            <td>
+              <%= request.author %>
+            </td>
+            <td>
+              <%= link_to "削除する",admin_request_path(request),method: :delete,class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h3 class="title">漫画投稿登録</h3>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @post,url: posts_path(@post) do |f| %>
+      <h5>感想
+        <%= f.text_field :thoughts %>
+      </h5>
+      <h5>評価
+        <%= f.text_field :evaluation %>
+      </h5>
+      <h5>購入元
+        <%= f.text_field :purchase %>
+      </h5>
+      <h5>公開・非公開
+      </h5>
+  </div>
