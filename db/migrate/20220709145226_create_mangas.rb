@@ -5,6 +5,7 @@ class CreateMangas < ActiveRecord::Migration[6.1]
       t.string :title,null: false
       t.string :author,null: false
       t.string :rakuten,null: false
+      t.integer :isbn
 
       t.timestamps
     end

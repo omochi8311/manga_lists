@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h3 class="title">ジャンル新規登録</h3>
+      <h3 class="title">登録漫画一覧</h3>
     </div>
   </div>
   <div class="row">
@@ -10,24 +10,17 @@
         <%= f.text_field :title_cont %>
         <%= f.submit "検索" %>
       <% end %>
-      <% if @posts.present? %>
+      <% if @manga_search.present? %>
         <table class="table">
           <tr>
             <th>タイトル</th>
             <th>著者</th>
-            <th>評価</th>
-            <th>購入元</th>
-            <th>ジャンル</th>
-            <th>ユーザー名</th>
           </tr>
-        <% @posts.each do |post| %>
+        <% @isbn_manga.each do |manga| %>
           <tr>
-            <td><%= post.manga.title %></td>
-            <td><%= post.manga.author %></td>
-            <td><%= post.evaluation %></td>
-            <td><%= post.purchase %></td>
-            <td></td>
-            <td><%= post.customer.nickname %></td>
+            <td><%= link_to (image_tag(manga.large_image_url, style: "width: 70px;height: 100px;display: inline-block;")), manga.item_url %></td>
+            <td><%= manga.title %></td>
+            <td><%= manga.author %></td>
           </tr>
         <% end %>
         </table>

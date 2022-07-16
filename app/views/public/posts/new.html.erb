@@ -2,14 +2,16 @@
   <div class="row">
     <div class="">
       <h3 class="title">漫画投稿登録</h3>
-    </div>
-  </div>
-  <div class="row">
-    <%= form_with model: @post,url: posts_path(@post) do |f| %>
-      <h5>感想
-        <%= f.text_field :thoughts %>
-      </h5>
-      <h5>評価
+        <%= form_with model: Post.new, local: true do |f| %>
+      <%= @isbn_manga.each do |manga| %>
+          <div><%= link_to (image_tag(manga.large_image_url, style: "width: 70px;height: 100px;display: inline-block;")), manga.item_url %></div>
+          <div>著者：</div>
+          <div><%= manga.author %></div>
+          <div>タイトル：</div>
+          <div><%= manga.title %></div>
+             <div>感想：</div>
+    <div><%= f.text_field :thoughts %></div>
+          <h5>評価
         <%= f.text_field :evaluation %>
       </h5>
       <h5>購入元
@@ -17,4 +19,11 @@
       </h5>
       <h5>公開・非公開
       </h5>
+    <div><%= f.submit "登録" %></div>
+  <% end %>
+  <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%#= form_with model: @post,url: posts_path(@post) do |f| %>
   </div>

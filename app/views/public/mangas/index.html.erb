@@ -1,19 +1,17 @@
 <!--検索フォーム-->
-<%= search_form_for @q do |f| %>
+<%#= search_form_for @q do |f| %>
   <!--name_contは、あいまい検索を指定-->
-  <%= f.text_field :name_cont %>
-  <%= f.submit "検索" %>
-<% end %>
+  <%#= f.text_field :name_cont %>
+  <%#= f.submit "検索" %>
+<%# end %>
 <!--検索結果-->
-<% if @posts.present? %>
+<% if @mangas.present? %>
   <!--検索がヒットした場合-->
-  <% @posts.each do |post| %>
-    <%= post.manga.title %>
-    <%= post.manga.author %>
-    <%= post.evaluation  %>
-    <%= post.purchase %>
-    <%= post.genre.name %>
-    <%= post.customer.nickname %>
+  <% @mangas.each do |manga| %>
+    <%= link_to new_post_url(manga_id: manga.id) do %>
+      <div><%= manga.title %></div>
+      <div><%= manga.author %></div>
+    <% end %>
   <% end %>
 <% else %>
   <!--検索がヒットしなかった場合-->
