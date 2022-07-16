@@ -156,6 +156,10 @@ GEM
     rake (13.0.6)
     rakuten_web_service (1.13.1)
       json (~> 2.3)
+    ransack (3.0.1)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -233,6 +237,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6)
   rakuten_web_service
+  ransack
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring

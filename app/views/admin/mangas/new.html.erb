@@ -1,1 +1,25 @@
-楽天新規投稿画面
+  <h1>Rakuserach</h1>
+<div class='content'>
+  <div id="search-box">
+    <%= form_tag('/admin/mangas/new', method: :get) do %>
+        <%= text_field_tag :good, "",  id: "good_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"%><button title="検索" type="submit">検索</button>
+    <% end %>
+  </div>
+  <h2>検索結果</h2>
+  <div id='good_list'>
+    <% if @mangas.present? %>
+      <% @mangas.each do |manga| %>
+    <div class="list">
+      <% if manga.medium_image_urls[0].present? %>
+        <%= form_with model: @manga,url: admin_mangas_path do |f| %>
+        
+        <%= link_to (image_tag(manga.medium_image_urls[0], style: "width: 70px;height: 100px;display: inline-block;")), manga.url %>
+      <% end %>
+      <%= manga.name %>
+      <%#= manga.author %>
+        <%= f.submit "新規登録",class: "btn btn-success" %>
+    </div>
+  <% end %>
+  <% end %>
+  </div>
+</div>

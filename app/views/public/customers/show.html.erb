@@ -14,8 +14,12 @@
         <%= @customer.email %>
       </h5>
       <h5>
-        <%#= @customer.information %>
-      </h5>
+        <% if @customer.introduction? %>
+          <%= @customer.introduction %>
+        <% else %>
+          <%="未入力" %>
+        <% end %>
+        </h5>
         <%= link_to "プロフィール編集",customers_my_page_edit_path,class: "btn btn-danger" %>
         |
         <%= link_to "本一覧ページ",posts_path,class: "btn btn-primary" %>

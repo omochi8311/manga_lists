@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="title">ジャンル新規登録</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= search_form_for @q do |f| %>
+        <%= f.text_field :title_cont %>
+        <%= f.submit "検索" %>
+      <% end %>
+      <% if @posts.present? %>
+        <table class="table">
+          <tr>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>評価</th>
+            <th>購入元</th>
+            <th>ジャンル</th>
+            <th>ユーザー名</th>
+          </tr>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.manga.title %></td>
+            <td><%= post.manga.author %></td>
+            <td><%= post.evaluation %></td>
+            <td><%= post.purchase %></td>
+            <td></td>
+            <td><%= post.customer.nickname %></td>
+          </tr>
+        <% end %>
+        </table>
+      <% else %>
+        <p>検索結果はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
