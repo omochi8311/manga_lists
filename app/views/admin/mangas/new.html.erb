@@ -46,6 +46,7 @@
                   <%= f.hidden_field :title, value: manga.title %>
                   <%= f.hidden_field :author, value: manga.author %>
                   <%= f.hidden_field :rakuten, value: manga.item_url %>
+                  <%= f.hidden_field :rakuten_image_url,value: manga.large_image_url %>
                   <%= f.hidden_field :isbn, value: manga.isbn %>
                 <td><%= f.submit "新規登録",class: "btn btn-success" %></td>
               </tr>

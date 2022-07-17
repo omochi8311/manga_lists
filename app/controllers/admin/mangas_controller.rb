@@ -24,10 +24,13 @@ class Admin::MangasController < ApplicationController
   def index
     # distinct: trueは重複したデータを除外
     @manga_search = @q.result(distinct: true)
-    if params[:isbn]
-    @mangas = RakutenWebService::Books::Book.search(isbn: params[:isbn])
-    @isbn_manga = RakutenWebService::Books::Book.search(isbn: params[:isbn])
-    end
+    @isbn_manga = Manga.all
+  end
+
+  def destroy
+    @manga = Manga.find(params[:id])
+    @manga.destroy
+    redirect_to admin_mangas_path
   end
 
   private
@@ -36,6 +39,6 @@ class Admin::MangasController < ApplicationController
     params.require(:q).permit!
   end
   def manga_params
-    params.require(:manga).permit(:title, :author, :rakuten, :isbn)
+    params.require(:manga).permit(:title, :author, :rakuten, :isbn, :rakuten_image_url)
   end
 end

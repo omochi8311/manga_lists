@@ -61,3 +61,5 @@ gem 'devise'
 gem 'rakuten_web_service'
 
 gem 'ransack'
+
+gem 'jquery-rails'

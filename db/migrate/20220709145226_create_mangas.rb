@@ -6,6 +6,7 @@ class CreateMangas < ActiveRecord::Migration[6.1]
       t.string :author,null: false
       t.string :rakuten,null: false
       t.integer :isbn
+      t.string :rakuten_image_url
 
       t.timestamps
     end

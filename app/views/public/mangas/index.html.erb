@@ -1,19 +1,35 @@
-<!--検索フォーム-->
-<%#= search_form_for @q do |f| %>
-  <!--name_contは、あいまい検索を指定-->
-  <%#= f.text_field :name_cont %>
-  <%#= f.submit "検索" %>
-<%# end %>
-<!--検索結果-->
-<% if @mangas.present? %>
-  <!--検索がヒットした場合-->
-  <% @mangas.each do |manga| %>
-    <%= link_to new_post_url(manga_id: manga.id) do %>
-      <div><%= manga.title %></div>
-      <div><%= manga.author %></div>
-    <% end %>
-  <% end %>
-<% else %>
-  <!--検索がヒットしなかった場合-->
-  <p>検索結果はありません</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="title">登録漫画一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= search_form_for @q do |f| %>
+        <%= f.text_field :title_cont %>
+        <%= f.submit "タイトル検索" %>
+        <%= f.text_field :author_cont %>
+        <%= f.submit "著者検索" %>
+      <% end %>
+      <% if @manga_search.present? %>
+        <table class="table">
+          <tr>
+            <th>漫画画像</th>
+            <th>タイトル</th>
+            <th>著者</th>
+          </tr>
+        <% @mangas.each do |manga| %>
+          <tr>
+            <td><%= link_to (image_tag(manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), manga.rakuten %></td>
+            <td><%= manga.title %></td>
+            <td><%= manga.author %></td>
+          </tr>
+        <% end %>
+        </table>
+      <% else %>
+        <p>検索結果はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,24 @@
 class Public::MangasController < ApplicationController
+  before_action :search
 
   def new
-    params[:isbn]
-    @mangas = RakutenWebService::Books::Book.search(isbn: params[:isbn])
-    @isbn_manga = RakutenWebService::Books::Book.search(isbn: params[:isbn])
+  end
+
+  def search
+    @q = Manga.ransack(params[:q])
   end
 
   def index
+    @manga_search = @q.result(distinct: true)
     @mangas = Manga.all
+  end
+
+  private
+
+  def search_params
+    params.require(:q).permit!
+  end
+  def manga_params
+    params.require(:manga).permit(:title, :author, :rakuten, :isbn, :rakuten_image_url)
   end
 end
