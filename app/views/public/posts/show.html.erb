@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="title">登録漫画詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div><%= link_to (image_tag(@manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), @manga.rakuten %></div>
+      <div><%= @post.manga.title %></div>
+      <div><%= @post.manga.author %></div>
+      <div><%= @post.thoughts %></div>
+      <div><%= @post.purchase%></div>
+      <div></div>
+    </div>

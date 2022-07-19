@@ -13,6 +13,10 @@
             <th>ユーザー名</th>
             <th>公開/非公開</th>
           </tr>
+            <% @posts.each do |post| %>
+              <% if post.manga.blank? %>
+            <% next %>
+            <% end %>
           <tr>
             <td><%= post.manga.title %></td>
             <td><%= post.manga.author %></td>
@@ -21,5 +25,6 @@
             <td></td>
             <td></td>
           </tr>
+            <% end %>
         </thead>
       </table>

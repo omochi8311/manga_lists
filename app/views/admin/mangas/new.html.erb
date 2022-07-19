@@ -43,6 +43,7 @@
                 </td>
                 <td><%= manga.title %></td>
                 <td><%= manga.author %></td>
+                <td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
                   <%= f.hidden_field :title, value: manga.title %>
                   <%= f.hidden_field :author, value: manga.author %>
                   <%= f.hidden_field :rakuten, value: manga.item_url %>

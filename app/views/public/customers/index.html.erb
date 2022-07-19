@@ -11,20 +11,18 @@
           <th>会員ID</th>
           <th>会員画像</th>
           <th>会員ニックネーム</th>
-          <th>投稿数</th>
         </tr>
       <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
           <td>
             <% if customer.image.attached? %>
-              <%= image_tag customer.image, size: "80x80" %>
+              <%= image_tag customer.get_image, size: "80x80" %>
             <% else %>
               <%= image_tag 'no_image', size: "80x80" %>
             <% end %>
           </td>
           <td><%= customer.nickname %></td>
-          <td></td>
         </tr>
       <% end %>
   </div>

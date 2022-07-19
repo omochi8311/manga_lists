@@ -1,7 +1,9 @@
 class Customer < ApplicationRecord
-  has_one_attached :image
   has_many :posts
   has_many :requests
+
+  has_one_attached :image
+
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|

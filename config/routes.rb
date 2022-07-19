@@ -26,7 +26,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :mangas
-    resources :posts
+    #resources :posts
+    get '/posts', to: 'posts#index', as: "posts"
+    get '/mangas/:manga_id/post/new', to: 'posts#new', as: "manga_post_new"
+    post '/mangas/:manga_id/post', to: 'posts#create', as: "manga_post_create"
+    get '/mangas/:manga_id/post/:post_id/edit', to: 'posts#edit', as: "manga_post_edit"
+    get '/mangas/:manga_id/post/:post_id/show', to: 'posts#show', as: "manga_post_show"
+    patch '/mangas/:manga_id/post/:post_id', to: 'posts#update', as: "manga_post_update"
+
     get '/requests/completion' => 'requests#completion'
     get '/requests' => 'requests#new'
     post '/requests' => 'requests#create'

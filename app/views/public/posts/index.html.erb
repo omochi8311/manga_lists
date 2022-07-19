@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">漫画投稿一覧</h3>
     </div>
   </div>
@@ -18,13 +18,38 @@
       </thead>
       <tbody>
     <% @posts.each do |post| %>
+        <% if post.manga.blank? %>
+          <% next %>
+        <% end %>
         <tr>
-          <td><%= post.title %></td>
-          <td><%= post.author %></td>
-          <td></td>
+          <td><%= post.manga.title %></td>
+          <td><%= post.manga.author %></td>
+          <td>
+            <%= post.evaluation %>点
+            <div id="star<%= post.evaluation %>"></div>
+            <script>
+              $('#star<%= post.evaluation %>').raty({
+              size      : 36,
+              starOff : '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= post.evaluation %>,
+              });
+            </script>
+          </td>
           <td><%= post.purchase %></td>
-          <td></td>
-          <td><%= posts.customer.nickname %></td>
+          <td>
+            <% @manga.genres.each do |genre| %>
+              <p><%= genre.name %></p>
+            <% end %>
+          </td>
+          <td><%= post.customer.nickname %></td>
+              <td>
+                <% if @manga.id == current_customer %>
+                  <%= link_to "編集", edit_book_path(@book), class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
         </tr>
     <% end %>
       </tbody>

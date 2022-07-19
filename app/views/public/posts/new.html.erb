@@ -1,41 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">漫画投稿登録</h3>
-        <%= form_with model: Post.new, local: true do |f| %>
-      <% @mangas.each do |manga| %>
-          <div><%= link_to (image_tag(manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), manga.rakuten %></div>
+        <%= form_with model: @post, url: manga_post_create_path(@manga.id), local: true do |f| %>
+          <div><%= link_to (image_tag(@manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), @manga.rakuten %></div>
           <div>著者：</div>
-          <div><%= manga.author %></div>
+          <div><%= @manga.author %></div>
           <div>タイトル：</div>
-          <div><%= manga.title %></div>
-             <div>感想：</div>
-      <div><%= f.text_field :thoughts %></div>
-      <div id="star">
-    <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :evaluation %>
-    </div>
-  <script>
-  
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('/assets/star-off.png') %>',
-    starOn : '<%= asset_path('/assets/star-on.png') %>',
+          <div><%= @manga.title %></div>
+          <div>感想：</div>
+          <div><%= f.text_field :thoughts %></div>
+          <div id="star">
+            <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
+            <%= f.hidden_field :evaluation %>
+          </div>
+          <script>
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('/assets/star-off.png') %>',
+            starOn : '<%= asset_path('/assets/star-on.png') %>',
 
-    scoreName: 'post[evaluation]',
-    half: false
-  });
-  </script>
-      <h5>購入元
-        <%= f.text_field :purchase %>
-      </h5>
-        <%= f.radio_button:is_release, :ture %>
-        <%= f.label :公開 %>
-        <%= f.radio_button:is_release, :false %>
-        <%= f.label :非公開 %>
-    <div><%= f.submit "登録" %></div>
-  <% end %>
-  <% end %>
+            scoreName: 'post[evaluation]',
+            half: false
+          });
+          </script>
+          <h5>購入元
+            <%= f.text_field :purchase %>
+          </h5>
+            <%= f.radio_button:is_release, :ture %>
+            <%= f.label :公開 %>
+            <%= f.radio_button:is_release, :false %>
+            <%= f.label :非公開 %>
+        <div><%= f.submit "登録" %></div>
+      <% end %>
     </div>
   </div>
   <div class="row">

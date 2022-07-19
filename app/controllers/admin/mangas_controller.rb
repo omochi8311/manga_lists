@@ -6,10 +6,15 @@ class Admin::MangasController < ApplicationController
         @mangas = RakutenWebService::Books::Book.search(title: params[:keyword])
     end
       @manga = Manga.new
+      @genres = Genre.all
+      #binding.pry
   end
 
   def create
     @manga = Manga.new(manga_params)
+    #byebug
+    genre = Genre.find(params[:manga][:genre_id])
+    @manga.genres << genre
     @manga.save
     redirect_to admin_mangas_path
   end
