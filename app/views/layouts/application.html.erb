@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,8 +19,10 @@
               <%= link_to "会員一覧",customers_index_path, class: "btn btn-outline-secondary mr-4" %>
               <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-secondary" %>
             <% elsif admin_signed_in? %>
+              <%= link_to "リクエスト一覧",admin_path, class: "btn btn-outline-secondary mr-5" %>
               <%= link_to "ジャンル一覧",admin_genres_path, class: "btn btn-outline-secondary mr-5" %>
               <%= link_to "会員一覧",admin_customers_path, class: "btn btn-outline-secondary mr-5" %>
+              <%= link_to "漫画一覧",admin_mangas_path, class: "btn btn-outline-secondary mr-5" %>
               <%= link_to "漫画投稿一覧",admin_posts_path, class: "btn btn-outline-secondary mr-5" %>
               <%= link_to "ログアウト",destroy_admin_session_path,method: :delete,class: "btn btn-outline-secondary" %>
             <% else %>
@@ -32,7 +33,6 @@
             <% end %>
           </ul>
       </nav>
-
     </header>
     <%= yield %>
   </body>

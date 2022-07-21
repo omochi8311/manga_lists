@@ -3,9 +3,19 @@
     <div class="col-md-8">
       <h3 class="title">漫画投稿登録</h3>
     </div>
+    <div class="col-md-4">
+      <div class="title">
+      <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
+      </div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-4">
+    <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+      <%= link_to "新規登録",new_customer_registration_path, class: "btn btn-success" %>
+      <%= link_to "ログイン",new_customer_session_path, class: "btn btn-primary" %>
+    </div>
+    </div>
     <div class="col-md-6">
       <h5>
       <p>ようこそ、漫画リストへ！</p>
@@ -18,17 +28,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-8">
-      <% @mangas.each do |manga| %>
-        <%#= link_to %>
+    <div class="col-md-3">
+      <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+        <%= link_to "登録漫画一覧",mangas_path %>
+      </div>
+    </div>
+    <div class="col-md-6">
       <div class="manga">
+      <% @mangas.each do |manga| %>
+        <div class="mangas">
         <%= link_to (image_tag(manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), manga.rakuten %>
         <p><%= manga.title %></p>
         <p><%= manga.author %></p>
+        </div>
       <% end %>
       </div>
     </div>
   </div>
 </div>
-<%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>

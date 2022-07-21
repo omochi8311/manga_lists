@@ -16,3 +16,15 @@
  .title {
    margin: 20px;
  }
+
+ .manga {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+ }
+
+ .manga {
+  margin: 30px;
+ }
+

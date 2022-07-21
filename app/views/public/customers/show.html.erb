@@ -1,9 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">マイページ</h3>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <% if @customer.image.attached? %>
+        <%= image_tag @customer.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
       <h5>会員ID
         <%= @customer.id %>
       </h5>
@@ -19,8 +29,10 @@
         <% else %>
           <%="未入力" %>
         <% end %>
+    </div>
+  </div>
         </h5>
         <%= link_to "プロフィール編集",customers_my_page_edit_path,class: "btn btn-danger" %>
         |
-        <%= link_to "本一覧ページ",posts_path,class: "btn btn-primary" %>
+        <%= link_to "本一覧ページ",customers_page_path,class: "btn btn-primary" %>
 </div>

@@ -12,6 +12,14 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.all
   end
 
+  def page
+    @customer = current_customer
+    @posts = Post.all
+  end
+
+  def postlist
+  end
+
   def withdrawal
   end
 
@@ -29,6 +37,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:nickname, :email, :introduction, :is_deleted)
+    params.require(:customer).permit(:nickname, :email, :introduction, :is_deleted, :image)
   end
 end

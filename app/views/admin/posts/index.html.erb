@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">漫画投稿一覧</h3>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -20,11 +23,41 @@
           <tr>
             <td><%= post.manga.title %></td>
             <td><%= post.manga.author %></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <div id="star<%= post.id %>"></div>
+          　　　　  <script>
+      　　　　        $('#star<%= post.id %>').raty({
+            　　　　  size      : 36,
+            　　  starOff : '<%= asset_path('star-off.png') %>',
+            　　  starOn : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= post.evaluation %>,
+                });
+            </script>
+            </td>
+            <td>
+            <% @manga_genres.each do |m_genre| %>
+              <% if post.manga_id === m_genre.manga_id %>
+                <p><%= m_genre.genre.name %></p>
+              <% end %>
+            <% end %>
+            </td>
+            <td><%= post.customer.nickname %></td>
+            <td>
+              <% if post.is_release %>
+                <h6 class="text-success">公開</h6>
+              <% else %>
+                <h6 class="text-secondary">非公開</h6>
+              <% end %>
+            </td>
           </tr>
             <% end %>
         </thead>
       </table>
+    </div>
+  </div>
+  <div class="col-lg-12 justify-content-center d-flex align-items-center">
+    <%= paginate @posts %>
+  </div>
+</div>

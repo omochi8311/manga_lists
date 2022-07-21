@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="title"><%= @customer.nickname %>さんの漫画一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>評価</th>
+            <tth></tth>
+          </tr>
+        </thead>
+        <tbody>
+          <%= @customer.each do |customer| %>
+          <tr>
+            <td><%= customer.post.manga.title %></td>
+            <td><%= customer.post.manga.author %></td>
+            <td><%= customer.post evaluation %></td>
+            <td><%= link_to "詳細",manga_post_show_path(@post.manga.id,post.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

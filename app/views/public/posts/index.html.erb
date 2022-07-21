@@ -5,6 +5,16 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+      <%= search_form_for @q do |f| %>
+        <%= f.text_field :manga_title_cont %>
+        <%= f.submit "検索" %>
+      <% end %>
+      <% if @posts.present? %>
+    </div>
+  </div>
+  <div class="row">
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -14,6 +24,7 @@
           <th>購入元</th>
           <th>ジャンル名</th>
           <th>ユーザー名</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,10 +36,9 @@
           <td><%= post.manga.title %></td>
           <td><%= post.manga.author %></td>
           <td>
-            <%= post.evaluation %>点
-            <div id="star<%= post.evaluation %>"></div>
+            <div id="star<%= post.id %>"></div>
             <script>
-              $('#star<%= post.evaluation %>').raty({
+              $('#star<%= post.id %>').raty({
               size      : 36,
               starOff : '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
@@ -40,18 +50,19 @@
           </td>
           <td><%= post.purchase %></td>
           <td>
-            <% @manga.genres.each do |genre| %>
-              <p><%= genre.name %></p>
+            <% @manga_genres.each do |m_genre| %>
+              <% if post.manga_id === m_genre.manga_id %>
+                <p><%= m_genre.genre.name %></p>
+              <% end %>
             <% end %>
           </td>
           <td><%= post.customer.nickname %></td>
-              <td>
-                <% if @manga.id == current_customer %>
-                  <%= link_to "編集", edit_book_path(@book), class: "btn btn-sm btn-success" %>
-                <% end %>
-              </td>
+          <td><%= link_to "詳細",manga_post_show_path(post.manga.id, post.id) %></td>
+          <% end %>
+          <% else %>
+            <p>検索結果はありません</p>
+          <% end %>
         </tr>
-    <% end %>
       </tbody>
     </table>
   </div>

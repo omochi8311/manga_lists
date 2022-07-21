@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="title">漫画編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_with model: @post, url: manga_post_update_path(@post, @manga) do |f| %>
+      <div><%= link_to (image_tag(@post.manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), @manga.rakuten %></div>
+      <div><%= @post.manga.title %></div>
+      <div><%= @post.manga.author %></div>
+      <div><%= f.text_field :thoughts %></div>
+      <div id="star<%= @post.id %>">
+        <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :evaluation %>
+      </div>
+      <script>
+        $('#star<%= @post.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('/assets/star-off.png') %>',
+        starOn : '<%= asset_path('/assets/star-on.png') %>',
+        half: false,
+        score: <%= @post.evaluation %>,
+        scoreName: 'post[evaluation]',
+        });
+      </script>
+      <div><%= f.text_field :purchase%></div>
+      <div>
+        <%= f.radio_button :is_release, :ture, checked: @post.is_release == true ? true : false %>
+        <%= f.label :公開 %>
+        <%= f.radio_button :is_release, :false, checked: @post.is_release == false ? true : false %>
+        <%= f.label :非公開 %>
+      </div>
+        <%= f.submit "変更を保存",class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

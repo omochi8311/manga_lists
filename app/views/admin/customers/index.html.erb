@@ -9,7 +9,6 @@
               <th>会員ID</th>
               <th>ニックネーム</th>
               <th>メールアドレス</th>
-              <th>投稿数</th>
               <th>退会ステータス</th>
             </tr>
           </thead>
@@ -19,7 +18,6 @@
                 <td><%= customer.id %></td>
                 <td><%= link_to customer.nickname,"customers/#{customer.id}/edit" %></td>
                 <td><%= customer.email %></td>
-                <td></td>
                 <td>
                   <% if customer.is_deleted %>
                     <h6 class="text-secondary">退会</h6>
@@ -32,4 +30,7 @@
           </tbody>
         </table>
   </div>
+    <div class="col-lg-12 justify-content-center d-flex align-items-center">
+      <%= paginate @customers %>
+    </div>
 </div>

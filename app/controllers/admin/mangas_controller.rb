@@ -12,7 +12,6 @@ class Admin::MangasController < ApplicationController
 
   def create
     @manga = Manga.new(manga_params)
-    #byebug
     genre = Genre.find(params[:manga][:genre_id])
     @manga.genres << genre
     @manga.save
@@ -29,7 +28,7 @@ class Admin::MangasController < ApplicationController
   def index
     # distinct: trueは重複したデータを除外
     @manga_search = @q.result(distinct: true)
-    @isbn_manga = Manga.all
+    @isbn_manga = Manga.all.page(params[:page]).per(10)
   end
 
   def destroy

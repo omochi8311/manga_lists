@@ -3,7 +3,7 @@
     <div class="">
       <h3 class="title">会員詳細/編集</h3>
         <%= form_with model: @customer,url: admin_customer_path(@customer) do |f| %>
-            <%= f.file_field :image, accept: "image/*" %>
+          <%= f.file_field :image, accept: "image/*" %>
         <h5>会員ID</h5>
           <%= @customer.id %>
           <h5>会員ニックネーム</h5>

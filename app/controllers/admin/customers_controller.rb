@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page]).per(10)
   end
 
   def edit
@@ -14,6 +14,7 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
+    byebug
     @customer.update(customer_params)
     redirect_to  admin_customers_path
   end

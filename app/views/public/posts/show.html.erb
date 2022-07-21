@@ -1,15 +1,63 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h3 class="title">登録漫画詳細</h3>
+      <h3 class="title">漫画詳細</h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <div><%= link_to (image_tag(@manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), @manga.rakuten %></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <div><%= link_to (image_tag(@post.manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), @manga.rakuten %></div>
       <div><%= @post.manga.title %></div>
       <div><%= @post.manga.author %></div>
-      <div><%= @post.thoughts %></div>
-      <div><%= @post.purchase%></div>
-      <div></div>
     </div>
+    <div class="col-md-6">
+      <table class="table">
+        <tr>
+          <td>感想</td>
+          <td><%= @post.thoughts %></td>
+        </tr>
+        <tr>
+          <td>評価</td>
+          <td>
+            <div id="star<%= @post.id %>"></div>
+            <script>
+              $('#star<%= @post.id %>').raty({
+              size      : 36,
+              starOff : '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= @post.evaluation %>,
+              });
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td>購入元</td>
+          <td><%= @post.purchase%></td>
+        </tr>
+        <tr>
+          <td>公開ステータス</td>
+          <td>
+            <% if @post.is_release %>
+              <h6 class="text-success">公開</h6>
+            <% else %>
+              <h6 class="text-secondary">非公開</h6>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+        <%= link_to "戻る", posts_path,class: "btn btn-primary mr-5 w-25" %>
+          <% if @post.customer.id == current_customer.id %>
+            <%= link_to "編集", manga_post_edit_path(@manga, @post),class: "btn btn-success w-25" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

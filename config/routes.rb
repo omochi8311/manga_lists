@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     get '/customers/index' => 'customers#index'
     get '/customers/withdrawal' => 'customers#withdrawal'
     get '/customers/my_page/edit' => 'customers#edit'
+    get '/customers/page' => 'customers#page'
+    get '/customers/postlist' => 'customers#postlist'
     patch '/customers/update' => 'customers#update'
     patch '/customers/quit' => 'customers#quit'
   end
