@@ -12,16 +12,19 @@
             <th>タイトル</th>
             <th>著者</th>
             <th>評価</th>
-            <tth></tth>
+            <th></tth>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <%= @customer.each do |customer| %>
+          <% @customer.posts.each do |post| %>
+          <% next if post.manga == nil%>
           <tr>
-            <td><%= customer.post.manga.title %></td>
-            <td><%= customer.post.manga.author %></td>
-            <td><%= customer.post evaluation %></td>
-            <td><%= link_to "詳細",manga_post_show_path(@post.manga.id,post.id) %></td>
+            <td><%= post.manga.title %></td>
+            <td><%= post.manga.author %></td>
+            <td><%= post.evaluation %></td>
+            <td><%= link_to "詳細",manga_post_show_path(post.manga.id, post.id),class: "btn btn-success" %></td>
+            <td><%= link_to "編集",manga_post_edit_path(manga_id: post.manga.id, post_id: post.id), class: "btn btn-primary" %></td>
           </tr>
           <% end %>
         </tbody>

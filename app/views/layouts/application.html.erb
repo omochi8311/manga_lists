@@ -14,7 +14,8 @@
         <h2>Manga lists</h2>
           <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-              <%= link_to "マイページ",customers_my_page_path	, class: "btn btn-outline-secondary mr-4" %>
+              <%= link_to "マイページ",customers_my_page_path, class: "btn btn-outline-secondary mr-4" %>
+              <%= link_to "漫画新規投稿",mangas_path,class: "btn btn-outline-secondary mr-4" %>
               <%= link_to "漫画投稿一覧",posts_path, class: "btn btn-outline-secondary mr-4" %>
               <%= link_to "会員一覧",customers_index_path, class: "btn btn-outline-secondary mr-4" %>
               <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-secondary" %>

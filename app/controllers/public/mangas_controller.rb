@@ -1,11 +1,13 @@
 class Public::MangasController < ApplicationController
-  before_action :search
+before_action :search, only: [:index, :search]
 
   def new
   end
 
   def search
     @q = Manga.ransack(params[:q])
+    @manga_search  = @q.result(distinct: true)
+
   end
 
   def index

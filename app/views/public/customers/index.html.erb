@@ -1,33 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">会員一覧</h3>
     </div>
   </div>
   <div class="row">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>会員ID</th>
-          <th>会員画像</th>
-          <th>会員ニックネーム</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @customers.each do |customer| %>
-        <tr>
-          <td><%= customer.id %></td>
-          <td>
-            <% if customer.image.attached? %>
-              <%= image_tag customer.image, size: "80x80" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "80x80" %>
-            <% end %>
-          </td>
-          <td><%= customer.nickname %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>会員ID</th>
+            <th>会員画像</th>
+            <th>会員ニックネーム</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td>
+              <% if customer.image.attached? %>
+                <%= image_tag customer.image, size: "80x80" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "80x80" %>
+              <% end %>
+            </td>
+            <td><%= customer.nickname %></td>
+            <td><%= link_to "漫画一覧",manga_post_list_path(customer.id),class: "btn btn-success" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

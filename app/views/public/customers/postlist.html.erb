@@ -12,17 +12,29 @@
             <th>タイトル</th>
             <th>著者</th>
             <th>評価</th>
-            <tth></tth>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <%= @customer.each do |customer| %>
+          <% @customer.posts.each do |post| %>
+          <% next if post.manga == nil%>
           <tr>
-            <td><%= customer.post.manga.title %></td>
-            <td><%= customer.post.manga.author %></td>
-            <td><%= customer.post evaluation %></td>
-            <td><%= link_to "詳細",manga_post_show_path(@post.manga.id,post.id) %></td>
-            <td><%= link_to "編集",manga_post_edit_path(@post.manga.id,post.id) %></td>
+            <td><%= post.manga.title %></td>
+            <td><%= post.manga.author %></td>
+            <td>
+              <div id="star<%= post.id %>"></div>
+              <script>
+                $('#star<%= post.id %>').raty({
+                size      : 36,
+                starOff : '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= post.evaluation %>,
+                });
+              </script>
+            </td>
+            <td><%= link_to "詳細",manga_post_show_path(manga_id: post.manga.id, post_id: post.id),class: "btn btn-success" %></td>
           </tr>
           <% end %>
         </tbody>
