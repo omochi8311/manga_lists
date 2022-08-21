@@ -32,7 +32,6 @@ before_action :search, only: [:index, :search]
   end
 
   def search
-    #byebug
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
     @manga_genres =  MangaGenre.all

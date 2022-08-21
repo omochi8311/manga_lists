@@ -12,28 +12,31 @@
       <div><%= @post.manga.title %></div>
       <div><%= @post.manga.author %></div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-">
       <table class="table table-borderless">
       <tr>
         <td><%= f.label :thoughts,'感想' %></td>
         <td><%= f.text_field :thoughts %></td>
       </tr>
       <tr>
-          <td><%= f.label :evaluation,'評価' %>
-            <%= f.hidden_field :evaluation %>
-          </td>
-          <td>
-            <div id="star<%= @post.id %>"></div>
-            <script>
-            $('#star<%= @post.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('/assets/star-off.png') %>',
-            starOn : '<%= asset_path('/assets/star-on.png') %>',
-            half: false,
-            score: <%= @post.evaluation %>,
-            scoreName: 'post[evaluation]',
-            });
+        <td>
+          <%# byebug %>
+          <%= f.label :evaluation,'評価' %>
+          <%= f.hidden_field :evaluation %>
+        </td>
+        <td>
+          <div id="star<%= @post.id %>">
+          <script>
+          $('#star<%= @post.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('/assets/star-off.png') %>',
+          starOn : '<%= asset_path('/assets/star-on.png') %>',
+          half: false,
+          score: <%= @post.evaluation %>,
+          scoreName: 'post[evaluation]',
+          });
           </script>
+          </div>
         </td>
       </tr>
       <tr>
@@ -45,10 +48,10 @@
           <%= f.label :is_release,'公開ステータス' %>
         </td>
         <td>
-        <%= f.radio_button :is_release, :ture, checked: @post.is_release == true ? true : false %>
-        <%= f.label :公開 %>
-        <%= f.radio_button :is_release, :false, checked: @post.is_release == false ? true : false %>
-        <%= f.label :非公開 %>
+          <%= f.radio_button :is_release, :ture, checked: @post.is_release == true ? true : false %>
+          <%= f.label :公開 %>
+          <%= f.radio_button :is_release, :false, checked: @post.is_release == false ? true : false %>
+          <%= f.label :非公開 %>
         </td>
       </tr>
       </table>

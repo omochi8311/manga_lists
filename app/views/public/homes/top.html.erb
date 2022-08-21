@@ -28,12 +28,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3">
-      <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+    <div class="col-md-8">
+      <h3 class="title">新着漫画（６冊）</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="title">
         <%= link_to "登録漫画一覧",mangas_path %>
       </div>
     </div>
-    <div class="col-md-8">
+  </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
       <div class="manga">
       <% @mangas.each do |manga| %>
         <div class="mangas">

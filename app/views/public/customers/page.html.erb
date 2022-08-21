@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -22,7 +22,19 @@
           <tr>
             <td><%= post.manga.title %></td>
             <td><%= post.manga.author %></td>
-            <td><%= post.evaluation %></td>
+            <td>
+              <div id="star<%= post.id %>"></div>
+              <script>
+                $('#star<%= post.id %>').raty({
+                size      : 36,
+                starOff : '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= post.evaluation %>,
+                });
+              </script>
+            </td>
             <td><%= link_to "詳細",manga_post_show_path(post.manga.id, post.id),class: "btn btn-success" %></td>
             <td><%= link_to "編集",manga_post_edit_path(manga_id: post.manga.id, post_id: post.id), class: "btn btn-primary" %></td>
           </tr>
