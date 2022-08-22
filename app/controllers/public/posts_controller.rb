@@ -41,6 +41,7 @@ before_action :search, only: [:index, :search]
   def index
     @manga_search = @q.result(distinct: true)
     @posts = Post.all
+    #@posts = Post.where(is_release: true)
     @manga_genres =  MangaGenre.all
     @genre = Genre.all
     @mangas = Manga.all
