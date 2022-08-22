@@ -17,6 +17,9 @@
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
+            <% if customer.is_deleted == true %>
+              <% next %>
+            <% end %>
           <tr>
             <td><%= customer.id %></td>
             <td>

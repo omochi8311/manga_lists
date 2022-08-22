@@ -15,7 +15,7 @@ class Admin::MangasController < ApplicationController
     genre = Genre.find(params[:manga][:genre_id])
     @manga.genres << genre
     @manga.save
-    redirect_to admin_mangas_path
+    redirect_to new_admin_manga_path
   end
 
   def show
@@ -26,7 +26,6 @@ class Admin::MangasController < ApplicationController
   end
 
   def index
-    # distinct: trueは重複したデータを除外
     @manga_search = @q.result(distinct: true)
     @isbn_manga = Manga.all.page(params[:page]).per(10)
   end

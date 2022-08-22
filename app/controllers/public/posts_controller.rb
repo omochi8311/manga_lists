@@ -33,15 +33,14 @@ before_action :search, only: [:index, :search]
 
   def search
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result(distinct: true).page(params[:page]).per(10)
     @manga_genres =  MangaGenre.all
     render :index
   end
 
   def index
     @manga_search = @q.result(distinct: true)
-    @posts = Post.all
-    #@posts = Post.where(is_release: true)
+    @posts = Post.all.page(params[:page]).per(10)
     @manga_genres =  MangaGenre.all
     @genre = Genre.all
     @mangas = Manga.all
