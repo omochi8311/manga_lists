@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h3 class="title">マイページ</h3>
+      <h3 class="title">会員詳細/編集</h3>
     </div>
   </div>
   <div class="row">
@@ -16,10 +16,6 @@
     <div class="col-md-6">
       <table class="table table-borderless">
         <tr>
-          <td>会員ID</td>
-          <td><%= @customer.id %></td>
-        </tr>
-        <tr>
           <td>ニックネーム</td>
           <td><%= @customer.nickname %></td>
         </tr>
@@ -28,23 +24,23 @@
           <td><%= @customer.email %></td>
         </tr>
         <tr>
-          <td>公開ステータス</td>
+          <td>自己紹介</td>
+          <td><%= @customer.introduction %></td>
+        </tr>
+        <tr>
+          <td>退会ステータス</td>
           <td>
-            <% if @customer.introduction? %>
-              <%= @customer.introduction %>
+            <% if @customer.is_deleted %>
+              <h6 class="text-secondary">退会</h6>
             <% else %>
-              <%="未入力" %>
+              <h6 class="text-success">有効</h6>
             <% end %>
           </td>
         </tr>
       </table>
     </div>
   </div>
-    <div class="d-flex align-items-center justify-content-center" style="height:100px;">
-      <%= link_to "プロフィール編集",customers_my_page_edit_path,class: "btn btn-danger mr-5 w-25" %>
-      <%= link_to "本一覧ページ",manga_page_path,class: "btn btn-primary w-25" %>
-    </div>
-    <div class="d-flex align-items-center justify-content-center" style="height:100px;">
-      <%= link_to "漫画新規投稿",mangas_path,class: "btn btn-success w-25" %>
-    </div>
+  <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+    <%= link_to "本一覧",manga_post_list_path(@customer.id),class: "btn btn-primary mr-5 w-25" %>
+  </div>
 </div>

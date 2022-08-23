@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <% @customer.posts.each do |post| %>
-          <% next if post.manga == nil%>
+          <% next if post.manga == nil %>
           <tr>
             <td><%= post.manga.title %></td>
             <td><%= post.manga.author %></td>
