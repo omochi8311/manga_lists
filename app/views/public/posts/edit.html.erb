@@ -6,26 +6,22 @@
   </div>
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-4">
+    <div class="col-md-5">
       <%= form_with model: @post, url: manga_post_update_path(@post, @manga) do |f| %>
       <div><%= link_to (image_tag(@post.manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), @manga.rakuten %></div>
       <div><%= @post.manga.title %></div>
       <div><%= @post.manga.author %></div>
     </div>
-    <div class="col-md-">
-      <table class="table table-borderless">
-      <tr>
-        <td><%= f.label :thoughts,'感想' %></td>
-        <td><%= f.text_field :thoughts %></td>
-      </tr>
-      <tr>
-        <td>
-          <%# byebug %>
-          <%= f.label :evaluation,'評価' %>
+    <div class="col-md-6">
+      <div>
+        <%= f.label :thoughts,'感想', class:'col-md-3 col-form-label' %>
+        <%= f.text_field :thoughts %>
+      </div>
+      <%# byebug %>
+      <div id="star<%= @post.id %>">
+          <%= f.label :evaluation,'評価', class:'col-md-3 col-form-label' %>
           <%= f.hidden_field :evaluation %>
-        </td>
-        <td>
-          <div id="star<%= @post.id %>">
+      </div>
           <script>
           $('#star<%= @post.id %>').raty({
           size: 36,
@@ -36,27 +32,20 @@
           scoreName: 'post[evaluation]',
           });
           </script>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td><%= f.label :purchase,'購入元' %></td>
-        <td><%= f.text_field :purchase%></td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.label :is_release,'公開ステータス' %>
-        </td>
-        <td>
+      <div>
+        <%= f.label :purchase,'購入元', class:'col-md-3 col-form-label' %>
+        <%= f.text_field :purchase %>
+      </div>
+      <div>
+          <%= f.label :is_release,'公開ステータス', class:'col-md-3 col-form-label' %>
           <%= f.radio_button :is_release, :ture, checked: @post.is_release == true ? true : false %>
           <%= f.label :公開 %>
           <%= f.radio_button :is_release, :false, checked: @post.is_release == false ? true : false %>
           <%= f.label :非公開 %>
-        </td>
-      </tr>
-      </table>
-        <%= f.submit "変更を保存",class: "btn btn-success" %>
+      </div>
+      <div class="d-flex align-items-center justify-content-center" style="height:100px;" >
+        <%= f.submit "変更を保存",class: "btn btn-success w-25" %>
+      </div>
       <% end %>
-    </div>
   </div>
 </div>

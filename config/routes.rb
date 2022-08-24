@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :requests
     resources :posts do
     collection do
-      get 'search'
+    get 'search'
     end
   end
   end

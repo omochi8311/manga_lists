@@ -23,7 +23,7 @@
             <th>著者</th>
             <th></th>
           </tr>
-        <% @isbn_manga.each do |manga| %>
+        <% @mangas.each do |manga| %>
           <tr>
             <td><%= link_to (image_tag(manga.rakuten_image_url, style: "width: 70px;height: 100px;display: inline-block;")), manga.rakuten %></td>
             <td><%= manga.title %></td>
@@ -38,6 +38,6 @@
     </div>
   </div>
   <div class="col-lg-12 justify-content-center d-flex align-items-center">
-    <%= paginate @isbn_manga %>
+    <%= paginate @mangas %>
   </div>
 </div>
