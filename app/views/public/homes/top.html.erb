@@ -37,14 +37,13 @@
       </div>
     </div>
   </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-11">
+    <div class="col-md-12">
       <div class="manga">
       <% @mangas.each do |manga| %>
         <div class="mangas">
-        <%= link_to (image_tag(manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), manga.rakuten %>
-        <p><%= manga.title %></p>
-        <p><%= manga.author %></p>
+          <%= link_to (image_tag(manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), manga.rakuten %>
+          <p><%= manga.title %></p>
+          <p><%= manga.author %></p>
         </div>
       <% end %>
       </div>
