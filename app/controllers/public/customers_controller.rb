@@ -14,7 +14,6 @@ class Public::CustomersController < ApplicationController
 
   def page
     @customer = current_customer
-    @posts = Post.all
   end
 
   def postlist

@@ -28,6 +28,7 @@ class Admin::MangasController < ApplicationController
   def index
     @manga_search = @q.result(distinct: true)
     @mangas = Manga.all.page(params[:page]).per(10)
+    
   end
 
   def destroy
