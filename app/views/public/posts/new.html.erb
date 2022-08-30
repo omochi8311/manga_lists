@@ -24,17 +24,17 @@
             <%= f.text_field :thoughts %>
           </div>
           <div id="star">
-            <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
+            <%= f.label :evaluation,'評価', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :evaluation %>
           </div>
           <script>
-          $('#star').raty({
+            $('#star').raty({
             size     : 36,
             starOff:  '<%= asset_path('/assets/star-off.png') %>',
             starOn : '<%= asset_path('/assets/star-on.png') %>',
             scoreName: 'post[evaluation]',
             half: false
-          });
+            });
           </script>
           <div>
             <%= f.label :purchase,'購入元 ', class:'col-md-3 col-form-label' %>
