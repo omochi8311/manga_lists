@@ -49,6 +49,6 @@ before_action :search, only: [:index, :search]
   private
 
   def post_params
-    params.require(:post).permit(:manga_id, :customer_id, :thoughts, :evaluation, :purchase, :is_release)
+    params.require(:post).permit(:manga_id, :post_id, :customer_id, :thoughts, :star, :purchase, :is_release)
   end
 end

@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-5">
-      <%= form_with model: @post, url: manga_post_update_path(@post, @manga) do |f| %>
+      <%= form_with model: @post, url: manga_post_update_path(@manga, @post) do |f| %>
       <div><%= link_to (image_tag(@post.manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), @manga.rakuten %></div>
       <div><%= @post.manga.title %></div>
       <div><%= @post.manga.author %></div>
@@ -19,16 +19,16 @@
       </div>
       <%# byebug %>
       <div id="star<%= @post.id %>">
-          <%= f.label :evaluation,'評価', class:'col-md-3 col-form-label' %>
-          <%= f.hidden_field :evaluation %>
+        <%= f.label :star,'評価', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :star, id: :review_star %>
       </div>
         <script>
           $('#star<%= @post.id %>').raty({
           size: 36,
           starOff:  '<%= asset_path('/assets/star-off.png') %>',
           starOn : '<%= asset_path('/assets/star-on.png') %>',
-          score: <%= @post.evaluation %>,
-          scoreName: 'post[evaluation]',
+          score: <%= @post.star %>,
+          scoreName: 'post[star]',
           half: false,
           });
         </script>

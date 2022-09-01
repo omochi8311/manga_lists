@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :manga_id,null: false
       t.integer :customer_id,null: false
       t.string :thoughts,null: false
-      t.float :evaluation, null: false, default: 0
+      t.float :star, null: false, default: 0
       t.string :purchase,null: false
 
       t.timestamps

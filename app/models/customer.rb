@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :requests
 
   has_one_attached :image
