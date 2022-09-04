@@ -23,9 +23,9 @@
             <%= f.label :thoughts,'感想 ', class:'col-md-3 col-form-label' %>
             <%= f.text_field :thoughts %>
           </div>
-          <div id="star">
+          <div>
             <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-            <%= f.hidden_field :star, id: :review_star %>
+            <%= f.select :star, [['⒈',1], ['⒉',2], ['⒊',3],['⒋',4],['⒌',5]],include_blank:"評価選択" %>点
           </div>
           <div>
             <%= f.label :purchase,'購入元 ', class:'col-md-3 col-form-label' %>
@@ -44,16 +44,4 @@
         <% end %>
     </div>
   </div>
-  <div class="row">
-    <%#= form_with model: @post,url: posts_path(@post) do |f| %>
-  </div>
 </div>
-<script>
-  $('#star').raty({
-  size     : 36,
-  starOff:  '<%= asset_path('/assets/star-off.png') %>',
-  starOn : '<%= asset_path('/assets/star-on.png') %>',
-  scoreName: 'post[star]',
-  half: false
-  });
-</script>
