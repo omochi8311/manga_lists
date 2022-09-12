@@ -10,7 +10,7 @@
       <% if @customer.image.attached? %>
         <%= image_tag @customer.image, size: "200x200" %>
       <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
+        <%= image_tag 'no_image.jpg', size: "200x200" %>
       <% end %>
         <%= form_with model: @customer,url: customers_update_path(@customer) do |f| %>
           <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
