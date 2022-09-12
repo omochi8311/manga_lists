@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_07_11_123341) do
     t.string "title", null: false
     t.string "author", null: false
     t.string "rakuten", null: false
-    t.decimal "isbn"
+    t.text "isbn"
     t.text "rakuten_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
