@@ -29,4 +29,4 @@ https://docs.google.com/spreadsheets/d/1VQ1Qa2RzPNey0SGsHk7S3Yigx-nOReRVLLBO145m
 - IDE：Cloud9
 
 ## 使用素材
-楽天APIを利用する.
+楽天API(楽天ブックス)を利用する.
