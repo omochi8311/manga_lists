@@ -1,35 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-md-8">
       <h3 class="title">会員一覧</h3>
     </div>
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th>会員ID</th>
-              <th>ニックネーム</th>
-              <th>メールアドレス</th>
-              <th>退会ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @customers.each do |customer| %>
-              <tr>
-                <td><%= customer.id %></td>
-                <td><%= link_to customer.nickname,"customers/#{customer.id}" %></td>
-                <td><%= customer.email %></td>
-                <td>
-                  <% if customer.is_deleted %>
-                    <h6 class="text-secondary">退会</h6>
-                  <% else %>
-                    <h6 class="text-success">有効</h6>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>会員ID</th>
+            <th>ニックネーム</th>
+            <th>メールアドレス</th>
+            <th>退会ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.nickname,"customers/#{customer.id}" %></td>
+              <td><%= customer.email %></td>
+              <td>
+                <% if customer.is_deleted %>
+                  <h6 class="text-secondary">退会</h6>
+                <% else %>
+                  <h6 class="text-success">有効</h6>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+    </div>
     <div class="col-lg-12 justify-content-center d-flex align-items-center">
       <%= paginate @customers %>
     </div>
