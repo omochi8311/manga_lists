@@ -11,8 +11,11 @@ before_action :search, only: [:index, :search]
     @post = Post.new(post_params)
     @post.manga_id = params[:manga_id]
     @post.customer_id = current_customer.id
-    @post.save
+    if@post.save
     redirect_to posts_path
+    else
+    redirect_to mangas_path
+    end
   end
 
   def show
