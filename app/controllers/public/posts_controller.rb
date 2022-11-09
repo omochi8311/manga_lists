@@ -11,10 +11,10 @@ before_action :search, only: [:index, :search]
     @post = Post.new(post_params)
     @post.manga_id = params[:manga_id]
     @post.customer_id = current_customer.id
-    if@post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
     else
-    redirect_to mangas_path
+      redirect_to #他のコントローラーにするので調べ中
     end
   end
 
