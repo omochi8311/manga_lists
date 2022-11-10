@@ -14,7 +14,7 @@ before_action :search, only: [:index, :search]
     if @post.save
       redirect_to posts_path
     else
-      redirect_to #他のコントローラーにするので調べ中
+      redirect_to mangas_path
     end
   end
 
@@ -24,8 +24,13 @@ before_action :search, only: [:index, :search]
   end
 
   def edit
-    @post = Post.find(params[:post_id])
     @manga = Manga.find(params[:manga_id])
+    @post = Post.find(params[:post_id])
+    if @post.customer.id == current_customer.id
+      render "edit"
+    else
+      redirect_to posts_path
+    end
   end
 
   def update
