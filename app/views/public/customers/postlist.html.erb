@@ -18,6 +18,9 @@
         <tbody>
           <% @customer.posts.each do |post| %>
           <% next if post.manga == nil%>
+          <% if post.is_release == false %>
+            <% next %>
+          <% end %>
           <tr>
             <td><%= post.manga.title %></td>
             <td><%= post.manga.author %></td>
