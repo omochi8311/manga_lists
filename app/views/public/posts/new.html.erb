@@ -8,7 +8,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <%= form_with model: @post, url: manga_post_create_path(@manga.id), local: true do |f| %>
-      <div><%= link_to (image_tag(@manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), @manga.rakuten %></div>
+      <%= link_to (image_tag(@manga.rakuten_image_url, style: "width: 140px;height: 200px;display: inline-block;")), @manga.rakuten %>
       <div>
         著者：
         <%= @manga.author %>
