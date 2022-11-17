@@ -54,7 +54,7 @@
     <div class="col-md-12">
       <div class="d-flex align-items-center justify-content-center" style="height:200px;">
         <%= link_to "戻る", posts_path,class: "btn btn-primary mr-5 w-25" %>
-          <% if @post.customer.id == current_customer.id %>
+          <% if customer_signed_in? && @post.customer.id == current_customer.id %>
             <%= link_to "編集", manga_post_edit_path(@manga, @post),class: "btn btn-success w-25" %>
           <% end %>
       </div>
